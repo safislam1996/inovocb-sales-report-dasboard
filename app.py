@@ -203,8 +203,8 @@ with col2:
         avg_per_visit = total_spent / total_visits if total_visits > 0 else 0
 
         st.metric("Total Visits", f"{total_visits:,}")
-        st.metric("Total Spent", f"€{total_spent:,.2f}")
-        st.metric("Avg Spent per Visit", f"€{avg_per_visit:.2f}")
+        st.metric("Total Spent", f"${total_spent:,.2f}")
+        st.metric("Avg Spent per Visit", f"${avg_per_visit:.2f}")
 
         # Top countries
         st.subheader("🏆 Top 10 Countries")
@@ -212,7 +212,7 @@ with col2:
         for idx, row in top_countries.iterrows():
             st.write(f"**{row['Country']}**")
             st.write(f"├─ Visits: {int(row['Visits']):,}")
-            st.write(f"└─ Spent: €{row['Total Spent']:,.2f}")
+            st.write(f"└─ Spent: ${row['Total Spent']:,.2f}")
             st.write("")
 
 # Selected countries detail
@@ -239,7 +239,7 @@ if selected_countries:
                     x='Store Name',
                     y='Total Spent',
                     title=f'Spending by Store in {country}',
-                    labels={'Total Spent': 'Total Spent (€)'}
+                    labels={'Total Spent': 'Total Spent ($)'}
                 )
                 fig_store.update_xaxes(tickangle=-45)
                 st.plotly_chart(fig_store, use_container_width=True)
